@@ -43,7 +43,12 @@
 			<version>0.0.1-SNAPSHOT</version>
 			<type>war</type>
 		</dependency>
-
+		<!-- https://mvnrepository.com/artifact/org.apache.maven/maven-archiver -->
+		<dependency>
+		    <groupId>org.apache.maven</groupId>
+		    <artifactId>maven-archiver</artifactId>
+		    <version>3.1.1</version>
+		</dependency>
 	</dependencies>
 
 	<build>
