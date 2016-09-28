@@ -32,7 +32,7 @@
 		</Root>
 
 		<!-- 为某些包/类配置特别的Log级别 -->
-		<Logger name="org.agile4j.architecture" level="debug" additivity="false">
+		<Logger name="org.agile4j" level="debug" additivity="false">
 			<AppenderRef ref="Console" />
 		</Logger>
 

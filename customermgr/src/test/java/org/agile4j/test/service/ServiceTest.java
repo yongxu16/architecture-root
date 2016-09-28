@@ -13,7 +13,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:spring/spring.xml")
+@ContextConfiguration(locations = "classpath:spring/spring-context.xml")
 public class ServiceTest {
 
 	private static final Logger LOGGER = LogManager.getLogger(ServiceTest.class);
@@ -24,18 +24,25 @@ public class ServiceTest {
 	@Test
 	public void save() {
 		CustomerModel cm = new CustomerModel();
-		cm.setCustomerId("hanyx");
+		cm.setCustomerId("hanyx02");
 		cm.setPwd("hanyx");
-		cm.setRegisterTime("001");
+		cm.setRegisterTime("004");
 		cm.setShowName("hanyx");
 		cm.setTrueName("韩永续");
-		customerService.create(cm);
+//		customerService.create(cm);
+		
+//		try {
+//			Method method = StatementHandler.class.getMethod("prepare", Connection.class,Integer.class);
+//			LOGGER.debug(method.toString());
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
 	}
 
 	@Test
 	public void getByConditionPage() {
 		CustomerQueryModel cqm = new CustomerQueryModel();
-		cqm.getPage().setPageShow(2);
+		cqm.getPage().setRowCount(2);
 		cqm.getPage().setNowPage(1);
 		Page<CustomerModel> page = customerService.getByConditionPage(cqm);
 		LOGGER.debug(page);

@@ -12,22 +12,23 @@ import java.util.List;
  */
 public class Page<T> implements Serializable {
 
-	private int pageShow = 10;
-	private int totalPage;
-	private int totalCount;
+	private int rowCount = 10;	// 显示行数
+	private int totalPage;		// 总页数
+	private int totalCount;		// 总数
 	private int start;
-	private int nowPage;
+	private int nowPage;		// 当前页数
 	private List<T> result = Collections.emptyList();
 
-	public int getPageShow() {
-		return pageShow;
+	public int getRowCount() {
+		return rowCount;
 	}
-	public void setPageShow(int pageShow) {
-		this.pageShow = pageShow;
+
+	public void setRowCount(int rowCount) {
+		this.rowCount = rowCount;
 	}
 
 	public int getTotalPage() {
-		return (int) Math.ceil(totalCount * 1.0 / pageShow);
+		return (int) Math.ceil(totalCount * 1.0 / rowCount);
 	}
 
 	public void setTotalPage(int totalPage) {
@@ -43,7 +44,7 @@ public class Page<T> implements Serializable {
 	}
 
 	public int getStart() {
-		start = (getNowPage() - 1) * getPageShow();
+		start = (getNowPage() - 1) * getRowCount();
 		if (start < 0) {
 			start = 0;
 		}
@@ -78,7 +79,7 @@ public class Page<T> implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Page [pageShow=" + pageShow + ", totalPage=" + totalPage + ", totalCount=" + totalCount + ", start=" + start + ", nowPage=" + nowPage + ", result=" + result + "]";
+		return "Page [pageShow=" + rowCount + ", totalPage=" + totalPage + ", totalCount=" + totalCount + ", start=" + start + ", nowPage=" + nowPage + ", result=" + result + "]";
 	}
 
 }

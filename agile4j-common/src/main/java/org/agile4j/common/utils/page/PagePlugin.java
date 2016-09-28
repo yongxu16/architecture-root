@@ -34,7 +34,7 @@ import org.apache.ibatis.type.TypeHandlerRegistry;
  * 
  * @author hanyx
  */
-@Intercepts(@Signature(type = StatementHandler.class, method = "prepare", args = { Connection.class }))
+@Intercepts(@Signature(type = StatementHandler.class, method = "prepare", args = { Connection.class, Integer.class}))
 public class PagePlugin implements Interceptor {
 	private static String dialect = ""; // 数据库方言
 	private static String pageSqlId = ""; // mapper.xml中需要拦截的ID(正则匹配)
@@ -151,12 +151,12 @@ public class PagePlugin implements Interceptor {
 			StringBuffer pageSql = new StringBuffer();
 			if ("mysql".equals(dialect)) {
 				pageSql.append(sql);
-				pageSql.append(" limit " + page.getStart() + "," + page.getPageShow());
+				pageSql.append(" limit " + page.getStart() + "," + page.getRowCount());
 			} else if ("oracle".equals(dialect)) {
 				pageSql.append("select * from (select tmp_tb.*,ROWNUM row_id from (");
 				pageSql.append(sql);
 				pageSql.append(") as tmp_tb where ROWNUM<=");
-				pageSql.append(page.getStart() + page.getPageShow());
+				pageSql.append(page.getStart() + page.getRowCount());
 				pageSql.append(") where row_id>");
 				pageSql.append(page.getStart());
 			}
