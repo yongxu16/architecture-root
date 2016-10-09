@@ -15,7 +15,7 @@ public interface BaseDAO<M, QM> {
 
 	void delete(int id);
 
-	M getById(int id);
+	M getByUuid(int id);
 
 	List<M> getByConditionPage(QM qm);
 }

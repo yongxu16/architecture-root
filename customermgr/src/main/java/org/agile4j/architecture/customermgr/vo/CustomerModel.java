@@ -41,7 +41,9 @@ public class CustomerModel extends BaseModel {
 	}
 	@Override
 	public String toString() {
-		return "CustomerModel [customerId=" + customerId + ", pwd=" + pwd + ", showName=" + showName + ", trueName="
-				+ trueName + ", registerTime=" + registerTime + "]";
+		return "CustomerModel [uuid=" + getUuid() + ", customerId=" + customerId + ", pwd=" + pwd
+				+ ", registerTime=" + registerTime + ", showName=" + showName + ", trueName=" + trueName + "]";
 	}
+	
+	
 }

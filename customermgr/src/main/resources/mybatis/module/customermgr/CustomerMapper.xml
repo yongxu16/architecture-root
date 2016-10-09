@@ -13,19 +13,19 @@
    			showName=#{showName},
    			trueName=#{trueName},
    			registerTime=#{registerTime} 
-   	  	where id=#{id}
+   	  	where uuid=#{uuid}
 	</update>
 	<delete id="delete" parameterType="int">
-		delete from tb_customer where id=#{id}
+		delete from tb_customer where uuid=#{uuid}
 	</delete>
-	<select id="getById" parameterType="int" resultType="CustomerModel">
-		select * from tb_customer where id=#{id}
+	<select id="getByUuid" parameterType="int" resultType="CustomerModel">
+		select * from tb_customer where uuid=#{uuid}
 	</select>
 	<select id="getByConditionPage" parameterType="CustomerQueryModel" resultType="CustomerModel">
 		select * from tb_customer
 		<where>
-			<if test="id!=null &amp;&amp; id > 0">
-        		and id=#{id}
+			<if test="uuid!=null &amp;&amp; uuid > 0">
+        		and uuid=#{uuid}
         	</if>  
         	<if test="customerId!=null &amp;&amp; customerId!=''">
         		and customerId=#{customerId}

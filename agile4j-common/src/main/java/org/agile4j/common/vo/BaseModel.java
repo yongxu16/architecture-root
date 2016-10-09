@@ -11,15 +11,17 @@ import org.agile4j.common.utils.page.Page;
  */
 public class BaseModel implements Serializable {
 
-	private Integer id;
+	private Integer uuid;
 	private Page page = new Page();
 
-	public Integer getId() {
-		return id;
+	
+
+	public Integer getUuid() {
+		return uuid;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setUuid(Integer uuid) {
+		this.uuid = uuid;
 	}
 
 	public Page getPage() {
@@ -34,7 +36,7 @@ public class BaseModel implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((uuid == null) ? 0 : uuid.hashCode());
 		return result;
 	}
 
@@ -47,10 +49,10 @@ public class BaseModel implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		BaseModel other = (BaseModel) obj;
-		if (id == null) {
-			if (other.id != null)
+		if (uuid == null) {
+			if (other.uuid != null)
 				return false;
-		} else if (!id.equals(other.id))
+		} else if (!uuid.equals(other.uuid))
 			return false;
 		return true;
 	}

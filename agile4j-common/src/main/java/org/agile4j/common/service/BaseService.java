@@ -34,8 +34,8 @@ public class BaseService<M, QM extends BaseModel> implements IBaseService<M, QM>
 	}
 
 	@Override
-	public M getById(int id) {
-		return (M) dao.getById(id);
+	public M getByUuid(int id) {
+		return (M) dao.getByUuid(id);
 	}
 
 	@Override

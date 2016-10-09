@@ -26,13 +26,16 @@
 	</Appenders>
 
 	<Loggers>
-		<Root level="ERROR"> <!-- 全局配置 -->
+		<Root level="debug"> <!-- 全局配置 -->
 			<AppenderRef ref="Console" />
 			<AppenderRef ref="RollingFile"/>
 		</Root>
 
 		<!-- 为某些包/类配置特别的Log级别 -->
 		<Logger name="org.agile4j" level="debug" additivity="false">
+			<AppenderRef ref="Console" />
+		</Logger>
+		<Logger name="org.apache.ibatis" level="debug" additivity="false">
 			<AppenderRef ref="Console" />
 		</Logger>
 
