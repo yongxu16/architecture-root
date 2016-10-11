@@ -1,6 +1,9 @@
 package org.agile4j.common.web;
 
-public class BaseWebModel {
+import java.io.Serializable;
+
+public class BaseWebModel implements Serializable {
+	
 	private String queryJsonStr = "";
 	private int nowPage = 1;	// 当前页数
 	private int rowCount = 2;	// 显示行数
