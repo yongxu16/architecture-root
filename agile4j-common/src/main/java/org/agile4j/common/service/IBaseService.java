@@ -14,9 +14,9 @@ public interface IBaseService<M, QM extends BaseModel> {
 
 	void update(M m);
 
-	void delete(int id);
+	void delete(int uuid);
 
-	M getByUuid(int id);
+	M getByUuid(int uuid);
 
 	Page<M> getByConditionPage(QM qm);
 }
