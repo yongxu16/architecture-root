@@ -22,13 +22,13 @@ public final class JsonUtil {
 	}
 	
 	public static <T> T str2Object(String str, Class<T> clz) {
+		T obj = null ;
 		ObjectMapper mapper = new ObjectMapper() ;
-		T t = null ;
 		try {
-			t = mapper.readValue(str, clz) ;
+			obj = mapper.readValue(str, clz) ;
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 
-		return t;
+		return obj;
 	}
 }
