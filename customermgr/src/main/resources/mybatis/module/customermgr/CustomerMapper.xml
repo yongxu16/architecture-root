@@ -32,7 +32,6 @@
         	</if>
         	<if test="showName!=null &amp;&amp; showName!=''">
         		and showName like concat('%',#{showName},'%')
-<!--         		and showName like "%"#{showName}"%" -->
         	</if>
 		</where>
 	</select>

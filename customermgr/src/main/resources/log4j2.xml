@@ -13,11 +13,12 @@
 		</Console>
 		
 		<!-- 输出到文件，fileName：目标路径和文件名；filePattern：文件分割命名规则，zip file folder and file name pattern -->	
-		<RollingFile name="RollingFile" fileName="logs/customer.log"	filePattern="logs/$${date:yyyy-MM}/rpc-server-%d{yyyy-MM-dd}-%i.log.gz">
+		<RollingFile name="RollingFile" fileName="logs/customer/customer.log"	filePattern="logs/customer/customer-%d{yyyy-MM-dd}-%i.log.gz">
 			<PatternLayout>
 				<Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
 			</PatternLayout>
-			<Policies> <!-- 文件分割规则 -->
+			<Policies><!-- 文件分割规则 -->
+              <TimeBasedTriggeringPolicy interval="24" modulate="true" />
 <!-- 				<OnStartupTriggeringPolicy /> -->
 <!-- 				<TimeBasedTriggeringPolicy /> -->
 				<SizeBasedTriggeringPolicy size="1024 KB" />
@@ -26,16 +27,13 @@
 	</Appenders>
 
 	<Loggers>
-		<Root level="debug"> <!-- 全局配置 -->
+		<Root level="ERROR"> <!-- 全局配置 -->
 			<AppenderRef ref="Console" />
 			<AppenderRef ref="RollingFile"/>
 		</Root>
 
 		<!-- 为某些包/类配置特别的Log级别 -->
 		<Logger name="org.agile4j" level="debug" additivity="false">
-			<AppenderRef ref="Console" />
-		</Logger>
-		<Logger name="org.apache.ibatis" level="debug" additivity="false">
 			<AppenderRef ref="Console" />
 		</Logger>
 

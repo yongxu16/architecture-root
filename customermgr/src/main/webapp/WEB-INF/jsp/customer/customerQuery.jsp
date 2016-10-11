@@ -21,7 +21,7 @@
 						trueName:$("#trueName").val()
 						} ;
 			var json = $.toJSON(jsVo);
-			window.location.href = "${pageContext.request.contextPath}/customer/toList?queryList=" + json ;
+			window.location.href = "${pageContext.request.contextPath}/customer/toList?queryJsonStr=" + json ;
 		});
 	});
 </script>

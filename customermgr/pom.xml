@@ -34,7 +34,7 @@
 						<contextPath>/${project.artifactId}</contextPath>
 					</webAppConfig>
 					<httpConnector>
-                        <port>8088</port>
+                        <port>8080</port>
                     </httpConnector>
 				</configuration>
 			</plugin>

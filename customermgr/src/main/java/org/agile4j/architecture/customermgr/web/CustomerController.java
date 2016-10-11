@@ -111,9 +111,11 @@ public class CustomerController {
 	@RequestMapping(value="toList", method=RequestMethod.GET)
 	public String toList(@ModelAttribute("wm")CustomerWebModel wm, Model model) {
 		CustomerQueryModel cqm = null ;
+		LOGGER.debug(wm);
 		if (Strings.isNullOrEmpty(wm.getQueryJsonStr())||Strings.isNullOrEmpty(wm.getQueryJsonStr().trim())) {
 			cqm = new CustomerQueryModel() ;
 		} else {
+			LOGGER.debug(wm.getQueryJsonStr());
 			cqm = JsonUtil.str2Object(wm.getQueryJsonStr(), CustomerQueryModel.class) ;
 		}
 		cqm.getPage().setNowPage(wm.getNowPage());

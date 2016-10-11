@@ -48,7 +48,7 @@
   </c:forEach>
   <tr>
   	<td colspan="6" align="center">
-  		<input type="hidden" id="queryJsonStr" value="${wm.queryJsonStr}">
+  		<input type="hidden" id="queryJsonStr" value='${wm.queryJsonStr}'>
   		<pageTag:pageTag page="${page}"></pageTag:pageTag>
   	</td>
   </tr>
