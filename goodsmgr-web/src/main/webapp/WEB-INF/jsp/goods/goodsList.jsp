@@ -13,7 +13,7 @@
 <body>
 <table  width="100%" border="1" cellpadding="0" cellspacing="1" class="tableLine DoubleColorTable" >
   <tr>
-    <td colspan="6">
+    <td colspan="4">
     	<a href="${pageContext.request.contextPath}/goods/toQuery">转到查询</a>
     	&nbsp;&nbsp;
     	<a href="${pageContext.request.contextPath}/goods/toAdd">转到新增</a>
@@ -43,7 +43,7 @@
   </tr>
   </c:forEach>
   <tr>
-  	<td colspan="6" align="center">
+  	<td colspan="4" align="center">
   		<input type="hidden" id="queryJsonStr" value='${wm.queryJsonStr}'>
   		<pageTag:pageTag page="${page}"></pageTag:pageTag>
   	</td>

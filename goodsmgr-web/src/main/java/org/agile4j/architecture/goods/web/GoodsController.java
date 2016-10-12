@@ -42,7 +42,7 @@ public class GoodsController {
 	 * @return
 	 */
 	@RequestMapping(value="/add", method=RequestMethod.POST)
-	public String list(@ModelAttribute("gm")GoodsModel gm){
+	public String add(@ModelAttribute("gm")GoodsModel gm){
 		this.goodsService.create(gm);
 		return "success";
 	}
