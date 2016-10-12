@@ -117,7 +117,7 @@ public class CartController {
 		Page<CartModel> page = this.cartService.getByConditionPage(cqm) ;
 		model.addAttribute("page", page) ;
 		model.addAttribute("wm",wm);
-		return "cart/CartList";
+		return "cart/cartList";
 	}
 	
 	/**
