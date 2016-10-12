@@ -1,42 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.agile4j.architecture.cartmgr.dao.GoodDAO">
+<mapper namespace="org.agile4j.architecture.goods.dao.GoodsDAO">
 
 	<!-- 以下两个<cache>标签二选一,第一个可以输出日志,第二个不输出日志
 	<cache type="org.mybatis.caches.ehcache.EhcacheCache" />   -->
     <cache type="org.mybatis.caches.ehcache.LoggingEhcache" />
     
-	<insert id="create" parameterType="CartModel">
-		insert into tb_cart (customerUuid,goodsUuid,buyNum) 
-		values(#{customerUuid},#{goodsUuid},#{buyNum})
+	<insert id="create" parameterType="GoodsModel">
+		insert into tb_goods (name,imgPath,description ) 
+		values(#{name},#{imgPath},#{description})
 	</insert>
-	<update id="update" parameterType="CartModel">
-		update tb_cart 
-		set customerUuid=#{customerUuid},
-			goodsUuid=#{goodsUuid},
-   			buyNum=#{buyNum} 
+	<update id="update" parameterType="GoodsModel">
+		update tb_goods 
+		set name=#{name},
+			imgPath=#{imgPath},
+   			description=#{description} 
    	  	where uuid=#{uuid}
 	</update>
 	<delete id="delete" parameterType="int">
-		delete from tb_cart where uuid=#{uuid}
+		delete from tb_goods where uuid=#{uuid}
 	</delete>
-	<select id="getByUuid" parameterType="int" resultType="CartModel">
-		select * from tb_cart where uuid=#{uuid}
+	<select id="getByUuid" parameterType="int" resultType="GoodsModel">
+		select * from tb_goods where uuid=#{uuid}
 	</select>
-	<select id="getByConditionPage" parameterType="CartQueryModel" resultType="CartModel" useCache="false" >
-		select * from tb_cart
+	<select id="getByConditionPage" parameterType="GoodsQueryModel" resultType="GoodsModel" useCache="false" >
+		select * from tb_goods
 		<where>
 			<if test="uuid!=null &amp;&amp; uuid > 0">
         		and uuid=#{uuid}
         	</if>  
         	<if test="customerUuid!=null &amp;&amp; customerUuid > 0">
-        		and customerUuid=#{customerUuid}
+        		and description=#{description}
         	</if>
         	<if test="goodsUuid!=null &amp;&amp; goodsUuid > 0">
-        		and goodsUuid=#{goodsUuid}
+        		and imgPath=#{imgPath}
         	</if>
         	<if test="buyNum!=null &amp;&amp; buyNum > 0">
-        		and buyNum=#{buyNum}
+        		and name like concat('%',#{name},'%')
         	</if>
 		</where>
 	</select>
