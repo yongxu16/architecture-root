@@ -77,7 +77,7 @@ public class CartController {
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping(value="/toUpdate/{uuid}", method=RequestMethod.POST)
+	@RequestMapping(value="/toUpdate/{uuid}", method=RequestMethod.GET)
 	public String toUpdate(@PathVariable("uuid")Integer uuid, Model model){
 		CartModel cm = this.cartService.getByUuid(uuid) ;
 		model.addAttribute("cm", cm) ;
@@ -109,7 +109,7 @@ public class CartController {
 		} else {
 			cqm = JsonUtil.str2Object(wm.getQueryJsonStr(), CartQueryModel.class) ;
 		}
-		cqm.getPage().setNowPage(wm.getNowPage()); // wm的nowPage是前台传过来的最新的
+		cqm.getPage().setNowPage(wm.getNowPage()); // nowPage是前台分页插件传过来;或初始化时的1页
 		if (wm.getRowCount() > 0) {
 			cqm.getPage().setRowCount(wm.getRowCount());// 取得baseWebModel的默认行数
 		}
