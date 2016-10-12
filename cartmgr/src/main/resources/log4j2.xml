@@ -13,7 +13,7 @@
 		</Console>
 		
 		<!-- 输出到文件，fileName：目标路径和文件名；filePattern：文件分割命名规则，zip file folder and file name pattern -->	
-		<RollingFile name="RollingFile" fileName="logs/customer/cart.log"	filePattern="logs/cart/cart-%d{yyyy-MM-dd}-%i.log.gz">
+		<RollingFile name="RollingFile" fileName="logs/cart/cart.log"	filePattern="logs/cart/cart-%d{yyyy-MM-dd}-%i.log.gz">
 			<PatternLayout>
 				<Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
 			</PatternLayout>
