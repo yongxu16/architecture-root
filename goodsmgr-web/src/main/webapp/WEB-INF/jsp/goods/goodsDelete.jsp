@@ -8,21 +8,21 @@
 <link href="${pageContext.request.contextPath}/static/css/application.css" rel="stylesheet">
 </head>
 <body>
-<form action="${pageContext.request.contextPath}/cart/delete" method="post">
-	<input type="hidden" name="uuid" value="${cm.uuid}">
+<form action="${pageContext.request.contextPath}/goods/delete" method="post">
+	<input type="hidden" name="uuid" value="${gm.uuid}">
 	<table width="100%" border="1" cellpadding="0" cellspacing="1" class="tableLine">
 	  <tr>
-	    <td colspan="4" align="center" class="tableLineBg">购物车刪除</td>
+	    <td colspan="4" align="center" class="tableLineBg">商品刪除</td>
 	  </tr>
 	  <tr>
-	    <td>客户编号</td>
-	    <td><input type="text" name="customerUuid" id="customerUuid" class="input" value="${cm.customerUuid}"></td>
-	    <td>客户密码</td>
-	    <td><input type="text" name="goodsUuid" id="goodsUuid" class="input" value="${cm.goodsUuid}"></td>
+	    <td>商品名称</td>
+	    <td><input type="text" name="name" id="name" class="input" value="${gm.name}"></td>
+	    <td>图片位置</td>
+	    <td><input type="text" name="imgPath" id="imgPath" class="input" value="${gm.imgPath}"></td>
 	  </tr>
 	  <tr>
-	    <td>购买数量</td>
-	    <td><input type="text" name="buyNum" id="buyNum" class="input" value="${cm.buyNum}"></td>
+	    <td>商品描述</td>
+	    <td><input type="text" name="description" id="description" class="input" value="${gm.description}"></td>
 	  </tr>
 	  <tr>
 	  	<td colspan="4" align="center"><input type="submit" value="刪除" class="button"></td>

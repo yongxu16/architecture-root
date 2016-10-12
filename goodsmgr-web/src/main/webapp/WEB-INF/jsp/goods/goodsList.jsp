@@ -14,31 +14,31 @@
 <table  width="100%" border="1" cellpadding="0" cellspacing="1" class="tableLine DoubleColorTable" >
   <tr>
     <td colspan="6">
-    	<a href="${pageContext.request.contextPath}/cart/toQuery">转到查询</a>
+    	<a href="${pageContext.request.contextPath}/goods/toQuery">转到查询</a>
     	&nbsp;&nbsp;
-    	<a href="${pageContext.request.contextPath}/cart/toAdd">转到新增</a>
+    	<a href="${pageContext.request.contextPath}/goods/toAdd">转到新增</a>
     </td>
   </tr>
   <tr>
     <td colspan="4" align="center" class="tableLineBg">
-    	客户列表
+    	商品列表
     </td>
   </tr>
   <tr>
-  	<td>客户编号</td>
-	<td>商品编号</td>
-	<td>购买数量</td>
+  	<td>商品名称</td>
+	<td>图片位置</td>
+	<td>商品描述</td>
 	<td>操作</td>
   </tr>
   <c:forEach var="m" items="${page.result}">
   <tr>
-  	<td>${m.customerUuid}</td>
-	<td>${m.goodsUuid}</td>
-	<td>${m.buyNum}</td>
+  	<td>${m.name}</td>
+	<td>${m.imgPath}</td>
+	<td>${m.description}</td>
 	<td>
-		<a href="${pageContext.request.contextPath}/cart/toUpdate/${m.uuid}">修改</a>
+		<a href="${pageContext.request.contextPath}/goods/toUpdate/${m.uuid}">修改</a>
     	&nbsp;&nbsp;
-    	<a href="${pageContext.request.contextPath}/cart/toDelete/${m.uuid}">刪除</a>
+    	<a href="${pageContext.request.contextPath}/goods/toDelete/${m.uuid}">刪除</a>
 	</td>
   </tr>
   </c:forEach>

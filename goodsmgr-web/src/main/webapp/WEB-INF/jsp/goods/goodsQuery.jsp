@@ -15,29 +15,29 @@
 <script type="text/javascript">
 	$(function(){
 		$("#btn_query").click(function(){
-			var jsVo = {customerUuid:$("#customerUuid").val(),
-						goodsUuid:$("#goodsUuid").val(),
-						buyNum:$("#buyNum").val()
+			var jsVo = {customerUuid:$("#name").val(),
+						goodsUuid:$("#imgPath").val(),
+						buyNum:$("#description").val()
 						} ;
 			var json = $.toJSON(jsVo);
-			window.location.href = "${pageContext.request.contextPath}/cart/toList?queryJsonStr=" + json ;
+			window.location.href = "${pageContext.request.contextPath}/goods/toList?queryJsonStr=" + json ;
 		});
 	});
 </script>
 
 <table id="" width="100%" border="1" cellpadding="0" cellspacing="1" class="tableLine DoubleColorTable" >
   <tr>
-    <td colspan="4" align="center" class="tableLineBg" >购物车查询 </td>
+    <td colspan="4" align="center" class="tableLineBg" >商品查询 </td>
   </tr>
   <tr>
-  	<td>客户编号</td>
-	<td><input type="text" id="customerUuid" name="customerUuid" class="input"></td>
-	<td>商品编号</td>
-	<td><input type="text" id="goodsUuid" name="goodsUuid" class="input"></td>
+  	<td>商品名称</td>
+	<td><input type="text" id="name" name="name" class="input"></td>
+	<td>图片位置</td>
+	<td><input type="text" id="imgPath" name="imgPath" class="input"></td>
   </tr>
   <tr>
-  	<td>购买数量</td>
-	<td><input type="text" id="buyNum" name="buyNum" class="input"></td>
+  	<td>商品描述</td>
+	<td><input type="text" id="description" name="description" class="input"></td>
   </tr>
   <tr>
 	<td colspan=4 align=center><input id="btn_query" type="button" value="查询" class="button"></td>

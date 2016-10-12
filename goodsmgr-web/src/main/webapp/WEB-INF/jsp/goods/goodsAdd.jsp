@@ -8,20 +8,20 @@
 <link href="${pageContext.request.contextPath}/static/css/application.css" rel="stylesheet">
 </head>
 <body>
-<form action="${pageContext.request.contextPath}/cart/add" method="post">
+<form action="${pageContext.request.contextPath}/goods/add" method="post">
 	<table width="100%" border="1" cellpadding="0" cellspacing="1" class="tableLine">
 	  <tr>
-	    <td colspan="4" align="center" class="tableLineBg">购物车新增</td>
+	    <td colspan="4" align="center" class="tableLineBg">商品新增</td>
 	  </tr>
 	  <tr>
-	    <td>客户编号</td>
-	    <td><input type="text" name="customerUuid" id="customerUuid" class="input"></td>
-	    <td>商品编号</td>
-	    <td><input type="text" name="goodsUuid" id="goodsUuid" class="input"></td>
+	    <td>商品名称</td>
+	    <td><input type="text" name="name" id="name" class="input"></td>
+	    <td>图片位置</td>
+	    <td><input type="text" name="imgPath" id="imgPath" class="input"></td>
 	  </tr>
 	  <tr>
-	    <td>购买数量</td>
-	    <td><input type="text" name="buyNum" id="buyNum" class="input"></td>
+	    <td>商品描述</td>
+	    <td><input type="text" name="description " id="description " class="input"></td>
 	  </tr>
 	  <tr>
 	  	<td colspan="4" align="center"><input type="submit" value="新增" class="button"></td>
