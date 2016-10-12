@@ -71,7 +71,7 @@
 		<property name="typeAliasesPackage" value="org.agile4j.architecture"/>
         <property name="typeAliasesSuperType" value="org.agile4j.common.vo.BaseModel"/>
 		<!-- mapper扫描 -->
-		<property name="mapperLocations" value="classpath:mybatis/**/*Mapper.xml" />
+		<property name="mapperLocations" value="classpath*:mybatis/**/*Mapper.xml" />
 	</bean>
 	<!-- 把配置文件和dao关联起来 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">

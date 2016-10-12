@@ -5,6 +5,8 @@ import org.agile4j.architecture.goods.vo.GoodsModel;
 import org.agile4j.architecture.goods.vo.GoodsQueryModel;
 import org.agile4j.common.utils.JsonUtil;
 import org.agile4j.common.utils.page.Page;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +22,8 @@ import com.google.common.base.Strings;
 @RequestMapping("/goods")
 public class GoodsController {
 
+	private final Logger LOGGER = LogManager.getLogger(GoodsController.class);
+	
 	@Autowired
 	private IGoodsService goodsService ;
 	
@@ -37,7 +41,7 @@ public class GoodsController {
 	 * @param gm
 	 * @return
 	 */
-	@RequestMapping(value="/list", method=RequestMethod.POST)
+	@RequestMapping(value="/add", method=RequestMethod.POST)
 	public String list(@ModelAttribute("gm")GoodsModel gm){
 		this.goodsService.create(gm);
 		return "success";
@@ -52,6 +56,7 @@ public class GoodsController {
 	@RequestMapping(value="/toDelete/{uuid}", method=RequestMethod.GET)
 	public String toDelete(@PathVariable("uuid")Integer uuid, Model model){
 		GoodsModel gm = this.goodsService.getByUuid(uuid) ;
+		LOGGER.debug(gm);
 		model.addAttribute("gm", gm) ;
 		return "goods/goodsDelete";
 	}
@@ -109,6 +114,7 @@ public class GoodsController {
 		if (wm.getRowCount() > 0) {
 			gqm.getPage().setRowCount(wm.getRowCount());// 取得baseWebModel的默认行数
 		}
+		
 		Page<GoodsModel> page = this.goodsService.getByConditionPage(gqm);
 		model.addAttribute("page", page);
 		model.addAttribute("wm", wm);

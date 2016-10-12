@@ -21,7 +21,7 @@
 	  </tr>
 	  <tr>
 	    <td>商品描述</td>
-	    <td><input type="text" name="description " id="description " class="input"></td>
+	    <td><input type="text" name="description" id="description" class="input"></td>
 	  </tr>
 	  <tr>
 	  	<td colspan="4" align="center"><input type="submit" value="新增" class="button"></td>

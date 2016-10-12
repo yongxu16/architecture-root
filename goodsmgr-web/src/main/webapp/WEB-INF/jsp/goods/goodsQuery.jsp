@@ -15,9 +15,9 @@
 <script type="text/javascript">
 	$(function(){
 		$("#btn_query").click(function(){
-			var jsVo = {customerUuid:$("#name").val(),
-						goodsUuid:$("#imgPath").val(),
-						buyNum:$("#description").val()
+			var jsVo = {name:$("#name").val(),
+						imgPath:$("#imgPath").val(),
+						description:$("#description").val()
 						} ;
 			var json = $.toJSON(jsVo);
 			window.location.href = "${pageContext.request.contextPath}/goods/toList?queryJsonStr=" + json ;
