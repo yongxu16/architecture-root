@@ -31,7 +31,7 @@
 					<scanIntervalSeconds>10</scanIntervalSeconds>
 					<stopPort>9999</stopPort>
 					<webAppConfig>
-						<contextPath>/ordermgr</contextPath>
+						<contextPath>/${project.artifactId}</contextPath>
 					</webAppConfig>
 					<httpConnector>
                         <port>8088</port>

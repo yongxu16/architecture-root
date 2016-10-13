@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.google.common.base.Strings;
 
 @Controller
-@RequestMapping("/order")
+@RequestMapping("/orderDetail")
 public class OrderDetailController {
 
 	private static final Logger LOGGER = LogManager.getLogger(OrderDetailController.class);
@@ -30,7 +30,7 @@ public class OrderDetailController {
 	
 	@RequestMapping(value="/toAdd", method=RequestMethod.GET)
 	public String toAdd(){
-		return "order/orderAdd";
+		return "orderDetail/orderDetailAdd";
 	}
 	
 	@RequestMapping(value="/add", method=RequestMethod.POST)
@@ -41,9 +41,9 @@ public class OrderDetailController {
 	
 	@RequestMapping(value="/toDelete/{uuid}", method=RequestMethod.GET)
 	public String toDelete(@PathVariable("uuid")Integer uuid,Model model){
-		OrderDetailModel om = this.orderDetailService.getByUuid(uuid);
-		model.addAttribute("om", om);
-		return "order/orderDelete";
+		OrderDetailModel odm = this.orderDetailService.getByUuid(uuid);
+		model.addAttribute("odm", odm);
+		return "orderDetail/orderDetailDelete";
 	}
 	
 	@RequestMapping(value="/delete", method=RequestMethod.POST)
@@ -53,9 +53,9 @@ public class OrderDetailController {
 	}
 	@RequestMapping(value="/toUpdate/{uuid}", method=RequestMethod.GET)
 	public String toUpdate(@PathVariable("uuid")Integer uuid,Model model){
-		OrderDetailModel om = this.orderDetailService.getByUuid(uuid);
-		model.addAttribute("om", om);
-		return "order/orderUpdate";
+		OrderDetailModel odm = this.orderDetailService.getByUuid(uuid);
+		model.addAttribute("odm", odm);
+		return "orderDetail/orderDetailUpdate";
 	}
 	
 	@RequestMapping(value="/update", method=RequestMethod.POST)
@@ -64,7 +64,7 @@ public class OrderDetailController {
 		return "success";
 	}
 	
-	@RequestMapping(value="toList", method=RequestMethod.GET)
+	@RequestMapping(value="/toList", method=RequestMethod.GET)
 	public String toList(@ModelAttribute("wm")OrderDetailWebModel wm, Model model){
 		OrderDetailQueryModel oqm = null ;
 		if (Strings.isNullOrEmpty(wm.getQueryJsonStr())||Strings.isNullOrEmpty(wm.getQueryJsonStr().trim())) {
@@ -79,11 +79,11 @@ public class OrderDetailController {
 		Page<OrderDetailModel> page = this.orderDetailService.getByConditionPage(oqm);
 		model.addAttribute("page", page);
 		model.addAttribute("wm", wm);
-		return "order/orderList";
+		return "orderDetail/orderDetailList";
 	}
 	
 	@RequestMapping(value="/toQuery", method=RequestMethod.GET)
 	public String toQuery(){
-		return "order/orderQuery";
+		return "orderDetail/orderDetailQuery";
 	}
 }

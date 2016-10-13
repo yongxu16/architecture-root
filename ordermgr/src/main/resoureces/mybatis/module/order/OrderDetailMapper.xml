@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.agile4j.architecture.cartmgr.dao.CartDAO">
+<mapper namespace="org.agile4j.architecture.order.dao.OrderDetailDAO">
 
 	<!-- 以下两个<cache>标签二选一,第一个可以输出日志,第二个不输出日志
 	<cache type="org.mybatis.caches.ehcache.EhcacheCache" />   -->
-    <cache type="org.agile4j.architecture.order.dao.OrderDetailDAO" />
+    <cache type="org.mybatis.caches.ehcache.LoggingEhcache" />
     
 	<insert id="create" parameterType="OrderDetailModel">
 		insert into tb_orderdetail (orderUuid,goodsUuid,orderNum,price,money,saveMoney) 
@@ -14,9 +14,9 @@
 		update tb_orderdetail 
 		set orderUuid=#{orderUuid},
 			goodsUuid=#{goodsUuid},
-   			orderNum=#{orderNum} 
-   			price=#{price} 
-   			money=#{money} 
+   			orderNum=#{orderNum} ,
+   			price=#{price} ,
+   			money=#{money} ,
    			saveMoney=#{saveMoney} 
    	  	where uuid=#{uuid}
 	</update>
@@ -26,7 +26,7 @@
 	<select id="getByUuid" parameterType="int" resultType="OrderDetailModel">
 		select * from tb_orderdetail where uuid=#{uuid}
 	</select>
-	<select id="getByConditionPage" parameterType="OrderQueryDetailModel" resultType="OrderDetailModel" useCache="false" >
+	<select id="getByConditionPage" parameterType="OrderDetailQueryModel" resultType="OrderDetailModel" useCache="false" >
 		select * from tb_orderdetail
 		<where>
 			<if test="uuid!=null &amp;&amp; uuid > 0">
