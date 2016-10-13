@@ -8,21 +8,27 @@
 <link href="${pageContext.request.contextPath}/static/css/application.css" rel="stylesheet">
 </head>
 <body>
-<form action="${pageContext.request.contextPath}/cart/update" method="post">
-	<input type="hidden" name="uuid" value="${cm.uuid}">
+<form action="${pageContext.request.contextPath}/order/update" method="post">
+	<input type="hidden" name="uuid" value="${om.uuid}">
 	<table width="100%" border="1" cellpadding="0" cellspacing="1" class="tableLine">
 	  <tr>
-	    <td colspan="4" align="center" class="tableLineBg">购物车更新</td>
+	    <td colspan="4" align="center" class="tableLineBg">订单更新</td>
 	  </tr>
 	  <tr>
 	    <td>客户编号</td>
-	    <td><input type="text" name="customerUuid" id="customerUuid" class="input" value="${cm.customerUuid}"></td>
-	    <td>客户密码</td>
-	    <td><input type="text" name="goodsUuid" id="goodsUuid" class="input" value="${cm.goodsUuid}"></td>
+	    <td><input type="text" name="customerUuid" id="customerUuid" class="input" value="${om.customerUuid}"></td>
+	    <td>下订单时间</td>
+	    <td><input type="text" name="orderTime" id="orderTime" class="input" value="${om.orderTime}"></td>
 	  </tr>
 	  <tr>
-	    <td>购买数量</td>
-	    <td><input type="text" name="buyNum" id="buyNum" class="input" value="${cm.buyNum}"></td>
+	    <td>总金额</td>
+	    <td><input type="text" name="totalMoney" id="totalMoney" class="input" value="${om.totalMoney}"></td>
+	    <td>节省金额</td>
+	    <td><input type="text" name="saveMoney" id="saveMoney" class="input" value="${om.saveMoney}"></td>
+	  </tr>
+	  <tr>
+	    <td>状态</td>
+	    <td><input type="text" name="state" id="state" class="input" value="${om.state}"></td>
 	  </tr>
 	  <tr>
 	  	<td colspan="4" align="center"><input type="submit" value="更新" class="button"></td>

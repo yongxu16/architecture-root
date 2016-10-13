@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.agile4j.architecture.order.dao.OrderDAO">
+
+	<!-- 以下两个<cache>标签二选一,第一个可以输出日志,第二个不输出日志
+	<cache type="org.mybatis.caches.ehcache.EhcacheCache" />   -->
+    <cache type="org.mybatis.caches.ehcache.LoggingEhcache" />
+    
+	<insert id="create" parameterType="OrderModel">
+		insert into tb_order (customerUuid,orderTime,totalMoney,saveMoney,state) 
+		values(#{customerUuid},#{orderTime},#{totalMoney},#{saveMoney},#{state})
+	</insert>
+	<update id="update" parameterType="OrderModel">
+		update tb_order 
+		set customerUuid=#{customerUuid},
+			orderTime=#{orderTime},
+   			totalMoney=#{totalMoney} 
+   			saveMoney=#{saveMoney} 
+   			state=#{state} 
+   	  	where uuid=#{uuid}
+	</update>
+	<delete id="delete" parameterType="int">
+		delete from tb_order where uuid=#{uuid}
+	</delete>
+	<select id="getByUuid" parameterType="int" resultType="OrderModel">
+		select * from tb_order where uuid=#{uuid}
+	</select>
+	<select id="getByConditionPage" parameterType="OrderQueryModel" resultType="OrderModel" useCache="false" >
+		select * from tb_order
+		<where>
+			<if test="uuid!=null &amp;&amp; uuid > 0">
+        		and uuid=#{uuid}
+        	</if>  
+        	<if test="customerUuid!=null &amp;&amp; customerUuid > 0">
+        		and customerUuid=#{customerUuid}
+        	</if>
+        	<if test="orderTime!=null &amp;&amp; orderTime != ''">
+        		and orderTime=#{orderTime}
+        	</if>
+        	<if test="totalMoney!=null &amp;&amp; totalMoney > 0">
+        		and totalMoney=#{totalMoney}
+        	</if>
+        	<if test="saveMoney!=null &amp;&amp; saveMoney > 0">
+        		and saveMoney=#{saveMoney}
+        	</if>
+        	<if test="state!=null &amp;&amp; state > 0">
+        		and state=#{state}
+        	</if>
+		</where>
+	</select>
+	
+</mapper>

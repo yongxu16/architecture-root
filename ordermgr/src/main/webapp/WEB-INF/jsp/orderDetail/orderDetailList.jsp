@@ -13,41 +13,43 @@
 <body>
 <table  width="100%" border="1" cellpadding="0" cellspacing="1" class="tableLine DoubleColorTable" >
   <tr>
-    <td colspan="6">
-    	<a href="${pageContext.request.contextPath}/order/toQuery">转到查询</a>
+    <td colspan="7">
+    	<a href="${pageContext.request.contextPath}/orderDetail/toQuery">转到查询</a>
     	&nbsp;&nbsp;
-    	<a href="${pageContext.request.contextPath}/order/toAdd">转到新增</a>
+    	<a href="${pageContext.request.contextPath}/orderDetail/toAdd">转到新增</a>
     </td>
   </tr>
   <tr>
-    <td colspan="6" align="center" class="tableLineBg">
-    	主订单列表
+    <td colspan="7" align="center" class="tableLineBg">
+    	订单明细列表
     </td>
   </tr>
   <tr>
-	<td>客户编号</td>
-	<td>下订单时间</td>
+	<td>订单编号</td>
+	<td>商品编号</td>
+	<td>购买数量</td>
+	<td>购买价格</td>
 	<td>总金额</td>
 	<td>节省金额</td>
-	<td>状态</td>
 	<td>操作</td>
   </tr>
   <c:forEach var="m" items="${page.result}">
   <tr>
-  	<td>${m.customerUuid}</td>
-	<td>${m.orderTime}</td>
-	<td>${m.totalMoney}</td>
-	<td>${m.saveMoney }</td>
-	<td>${m.state}</td>
+	<td>${m.orderUuid}</td>
+	<td>${m.goodsUuid}</td>
+	<td>${m.orderNum}</td>
+	<td>${m.price}</td>
+	<td>${m.money}</td>
+	<td>${m.saveMoney}</td>
 	<td>
-		<a href="${pageContext.request.contextPath}/order/toUpdate/${m.uuid}">修改</a>
+		<a href="${pageContext.request.contextPath}/orderDetail/toUpdate/${m.uuid}">修改</a>
     	&nbsp;&nbsp;
-    	<a href="${pageContext.request.contextPath}/order/toDelete/${m.uuid}">刪除</a>
+    	<a href="${pageContext.request.contextPath}/orderDetail/toDelete/${m.uuid}">刪除</a>
 	</td>
   </tr>
   </c:forEach>
   <tr>
-  	<td colspan="6" align="center">
+  	<td colspan="7" align="center">
   		<input type="hidden" id="queryJsonStr" value='${wm.queryJsonStr}'>
   		<pageTag:pageTag page="${page}"></pageTag:pageTag>
   	</td>

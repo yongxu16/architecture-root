@@ -15,37 +15,40 @@
 <script type="text/javascript">
 	$(function(){
 		$("#btn_query").click(function(){
-			var jsVo = {customerUuid:$("#customerUuid").val(),
-						orderTime:$("#orderTime").val(),
-						totalMoney:$("#totalMoney").val(),
-						saveMoney:$("#saveMoney").val(),
-						state:$("#state").val()
+			var jsVo = {orderUuid:$("#orderUuid").val(),
+						goodsUuid:$("#goodsUuid").val(),
+						orderNum:$("#orderNum").val(),
+						price:$("#price").val(),
+						money:$("#money").val(),
+						saveMoney:$("#saveMoney").val()
 						} ;
 			var json = $.toJSON(jsVo);
-			window.location.href = "${pageContext.request.contextPath}/order/toList?queryJsonStr=" + json ;
+			window.location.href = "${pageContext.request.contextPath}/orderDetail/toList?queryJsonStr=" + json ;
 		});
 	});
 </script>
 
 <table id="" width="100%" border="1" cellpadding="0" cellspacing="1" class="tableLine DoubleColorTable" >
   <tr>
-    <td colspan="4" align="center" class="tableLineBg" >订单查询 </td>
+    <td colspan="4" align="center" class="tableLineBg" >订单明细查询 </td>
+  </tr>
+<tr>
+  <td>订单编号</td>
+    <td><input type="text" name="orderUuid" id="orderUuid" class="input"></td>
+    <td>商品编号</td>
+    <td><input type="text" name="goodsUuid" id="goodsUuid" class="input"></td>
   </tr>
   <tr>
-  	<td>客户编号</td>
-	<td><input type="text" id="customerUuid" name="customerUuid" class="input"></td>
-	<td>下订单时间</td>
-	<td><input type="text" id="orderTime" name="orderTime" class="input"></td>
+    <td>购买数量</td>
+    <td><input type="text" name="orderNum" id="orderNum" class="input"></td>
+    <td>购买价格</td>
+    <td><input type="text" name="price" id="price" class="input"></td>
   </tr>
   <tr>
-  	<td>总金额</td>
-	<td><input type="text" id="totalMoney" name="totalMoney" class="input"></td>
-	<td>节省金额</td>
-	<td><input type="text" id="saveMoney" name="saveMoney" class="input"></td>
-  </tr>
-  <tr>
-  	<td>状态</td>
-	<td><input type="text" id="state" name="state" class="input"></td>
+    <td>总金额</td>
+    <td><input type="text" name="money" id="money" class="input"></td>
+    <td>节省金额</td>
+    <td><input type="text" name="saveMoney" id="saveMoney" class="input"></td>
   </tr>
   <tr>
 	<td colspan=4 align=center><input id="btn_query" type="button" value="查询" class="button"></td>

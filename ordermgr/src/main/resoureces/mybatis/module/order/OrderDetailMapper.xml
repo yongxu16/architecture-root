@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.agile4j.architecture.cartmgr.dao.CartDAO">
+
+	<!-- 以下两个<cache>标签二选一,第一个可以输出日志,第二个不输出日志
+	<cache type="org.mybatis.caches.ehcache.EhcacheCache" />   -->
+    <cache type="org.agile4j.architecture.order.dao.OrderDetailDAO" />
+    
+	<insert id="create" parameterType="OrderDetailModel">
+		insert into tb_orderdetail (orderUuid,goodsUuid,orderNum,price,money,saveMoney) 
+		values(#{orderUuid},#{goodsUuid},#{orderNum},#{price},#{money},#{saveMoney})
+	</insert>
+	<update id="update" parameterType="OrderDetailModel">
+		update tb_orderdetail 
+		set orderUuid=#{orderUuid},
+			goodsUuid=#{goodsUuid},
+   			orderNum=#{orderNum} 
+   			price=#{price} 
+   			money=#{money} 
+   			saveMoney=#{saveMoney} 
+   	  	where uuid=#{uuid}
+	</update>
+	<delete id="delete" parameterType="int">
+		delete from tb_orderdetail where uuid=#{uuid}
+	</delete>
+	<select id="getByUuid" parameterType="int" resultType="OrderDetailModel">
+		select * from tb_orderdetail where uuid=#{uuid}
+	</select>
+	<select id="getByConditionPage" parameterType="OrderQueryDetailModel" resultType="OrderDetailModel" useCache="false" >
+		select * from tb_orderdetail
+		<where>
+			<if test="uuid!=null &amp;&amp; uuid > 0">
+        		and uuid=#{uuid}
+        	</if>  
+        	<if test="orderUuid!=null &amp;&amp; orderUuid > 0">
+        		and orderUuid=#{orderUuid}
+        	</if>
+        	<if test="goodsUuid!=null &amp;&amp; goodsUuid > 0">
+        		and goodsUuid=#{goodsUuid}
+        	</if>
+        	<if test="orderNum!=null &amp;&amp; orderNum > 0">
+        		and orderNum=#{orderNum}
+        	</if>
+        	<if test="price!=null &amp;&amp; price > 0">
+        		and price=#{price}
+        	</if>
+        	<if test="money!=null &amp;&amp; money > 0">
+        		and money=#{money}
+        	</if>
+        	<if test="saveMoney!=null &amp;&amp; saveMoney > 0">
+        		and saveMoney=#{saveMoney}
+        	</if>
+		</where>
+	</select>
+	
+</mapper>
